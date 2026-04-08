@@ -1,0 +1,258 @@
+👉Decorators are flexible way to modify or extend behavior of functions or methods, 
+without changing their actual code.
+
+A decorator is essentially a function that takes another function 
+as an argument and returns a new function with enhanced functionality.
+
+
+
+ @staticmethod: used to define a method that doesn't operate on an instance of class 
+ (i.e., it doesn't use self). 
+ Static methods are called on class itself, not on an instance of class.
+
+ @classmethod: used to define a method that operates on class itself (i.e., it uses cls). 
+ Class methods can access and modify class state that applies across all instances of class.
+
+| Type            | Uses                          |
+| --------------- | ----------------------------- |
+| Instance method | Works with object (`self`)    |
+| Class method    | Works with class (`cls`)      |
+| Static method   | Independent (no self, no cls) |
+
+--------------------------------------------------------------------------------------------------------
+👉A lambda function is a small, one-line function without a name.
+Lambda functions are small anonymous functions, meaning they do not have a defined name. 
+These are small, short-lived functions used to pass simple logic to another function.
+    Contain only one expression.
+    Result of that expression is returned automatically (no return keyword needed).
+
+Below is the syntax:
+
+variable = lambda arguments: expression
+    add = lambda a, b: a + b
+    print(add(2, 3))
+
+
+👉filter() function is used to extract elements from an iterable (like a list, tuple or set)
+ that satisfy a given condition. 
+It works by applying a function to each element and keeping only those for which function returns True.
+
+🧩 Basic Syntax
+filter(function, iterable)
+function → condition (returns True/False)
+iterable → list, tuple, etc.
+
+👉map() function in Python applies a given function to each element of an iterable (list, tuple, set, etc.) 
+and returns a map object (iterator).
+
+🧩 Basic Syntax
+map(function, iterable)
+function → what operation to apply
+iterable → list, tuple, etc.
+
+
+| Feature          | map()          | filter()       |
+| ---------------- | -------------- | -------------- |
+| Purpose          | Transform data | Select data    |
+| Output size      | Same as input  | Can be smaller |
+| Function returns | Any value      | True/False     |
+
+numbers = [1, 2, 3, 4]
+
+# map → transforms
+map(lambda x: x * 2, numbers)   → [2, 4, 6, 8]
+
+# filter → selects
+filter(lambda x: x % 2 == 0, numbers) → [2, 4]
+
+👉The reduce() function in Python (from the functools module) 
+applies a function cumulatively to the elements of an iterable and returns a single final value.
+
+reduce() is designed to work with a function that:
+takes 2 inputs → returns 1 output
+
+| Function | Purpose             | Output       |
+| -------- | ------------------- | ------------ |
+| map()    | transform each item | list         |
+| filter() | select items        | list         |
+| reduce() | combine all items   | single value |
+
+
+----------------------------------------------------------------------------------------------
+👉Python sorted() Function
+
+sorted() function in Python returns a new sorted list from the elements of any iterable, 
+such as a list, tuple, set, or string. It does not modify the original iterable, 
+unlike the sort() method for lists.
+
+Syntax
+sorted(iterable, key=None, reverse=False)
+
+Parameters:
+
+iterable: The sequence to be sorted (list, tuple, set, string, etc.)
+key (Optional): A function to customize the sort order. Default is None.
+reverse (Optional): If True, sorts in descending order. Default is False.
+
+a = [4, 1, 3, 2]
+b = sorted(a)
+print(b)
+
+To sort an iterable in descending order, set the reverse argument to True.
+a = [5, 2, 9, 1, 5, 6]
+res = sorted(a, reverse=True)
+print(res)
+
+👉Python List sort() Method
+
+The sort() method is used to arrange the elements of a list in a specific order, 
+either ascending or descending. It changes the original list directly, 
+so no new list is created. This method works well for sorting numbers or strings.
+
+a = [4, 1, 3, 2]
+a.sort()
+print(a)
+
+Syntax
+lst.sort(key=None, reverse=False)
+
+Parameters:
+
+key (optional): A function used to decide how elements are compared 
+(for example, key=len sorts strings by length).
+reverse (optional): Controls the sorting order. False (default) sorts in ascending order, 
+True sorts in descending order.
+
+“sort() modifies the list in-place and returns None, 
+whereas sorted() returns a new sorted list and works on any iterable.”
+
+
+| Feature           | `sort()`             | `sorted()`        |
+| ----------------- | -------------------- | ----------------- |
+| Type              | List method          | Built-in function |
+| Modifies original | ✅ Yes                | ❌ No           |
+| Return value      | ❌ None               | ✅ New list     |
+| Works on          | Only lists           | Any iterable      |
+| Memory            | Efficient (in-place) | Uses extra space  |
+
+
+---------------------------------------------------------------------------------------------
+👉 Generators in Python
+
+A generator function is a special type of function that returns an iterator object. 
+Instead of using return to send back a single value, generator functions use 'yield'
+to produce a series of results over time.
+
+A generator is a function that:
+
+🔹uses yield instead of return
+🔹produces values one at a time
+🔹remembers its state between calls
+🔹Think of it like a pause & resume function.
+
+The generator has the following syntax in Python:
+
+def generator_function_name(parameters):
+    # Your code here
+    yield expression
+    # Additional code can follow
+    
+    
+🔹 Generator Expression (Shortcut)
+
+Like list comprehension, but uses () instead of []
+
+gen = (x * x for x in range(5))
+
+for i in gen:
+    print(i)
+Output:
+0 1 4 9 16
+
+
+👉 An iterator in Python is an object used to traverse through all the elements of a collection 
+(like lists, tuples or dictionaries) one element at a time. It follows the iterator protocol, 
+which involves two key methods:
+
+__iter__(): Returns the iterator object itself.
+__next__(): Returns the next value from the sequence
+
+nums = [10, 20, 30]
+
+it = iter(nums)   # convert list → iterator
+
+print(next(it))   # 10
+print(next(it))   # 20
+print(next(it))   # 30
+
+Iterable vs Iterator
+Type	    Meaning
+Iterable	Can be looped (list, tuple, string), Implements __iter__()
+Iterator	Gives values one-by-one, 	Implements both __iter__() and __next__()
+
+All generators are iterators. But not all iterators are generators
+------------------------------------------------------------------------------------------
+👉Garbage Collection in Python is an automatic process that handles memory allocation and deallocation, 
+ensuring efficient use of memory.It is a process in which Python automatically frees memory occupied 
+by objects that are no longer in use.
+
+Enabling and disabling the garbage collector: 
+You can enable or disable the garbage collector using the gc. enable() and gc. disable() functions, respectively.
+
+import gc
+# Disable 
+gc.disable()
+
+# Enable
+gc.enable()
+
+🔹Inspecting garbage collector settings: You can inspect the current settings of the garbage collector 
+using the gc.get_threshold() function.
+
+🔹Forcing garbage collection: You can manually trigger a garbage collection using the gc. collect() function. 
+
+This can be useful in cases where you want to force immediate garbage collection
+instead of waiting for automatic garbage collection to occur
+
+👉Reference Counting
+It is one of the primary memory management techniques used in Python, where:
+
+Every object keeps a reference counter, which tells how many variables (or references)are 
+currently pointing to that object.
+
+When a new reference to the object is created, counter increases.
+When a reference is deleted or goes out of scope, counter decreases.
+If the counter reaches zero, it means no variable is using the object anymore, 
+so Python automatically deallocates (frees) that memory.
+
+__________________________________________________________________________________________________________
+In Python, memory is divided mainly into two parts:
+
+Stack Memory
+Heap Memory
+
+👉Stack Memory: Stack memory is where method/function calls and reference variables are stored.
+
+Whenever a function is called, Python adds it to the call stack.
+Inside this function, all variables declared (like numbers, strings or temporary references) 
+are stored in stack memory.
+Once the function finishes executing, stack memory used by it is automatically freed.
+
+In simple terms: Stack memory is temporary and is only alive until the function or method call is running.
+
+👉 Heap Memory: Heap memory is where actual objects and values are stored.
+
+When a variable is created, Python allocates its object/value in heap memory.
+Stack memory stores only the reference (pointer) to this object.
+Objects in heap memory can be shared among multiple functions or exist even after a function 
+has finished executing.
+
+🔹Heap memory allocation happens at runtime.
+🔹This is where large data structures (lists, dictionaries, objects) are stored.
+🔹Garbage collection is responsible for cleaning up unused objects from heap memory.
+
+In simple terms: Heap memory is like a storage area where all values/objects live and 
+stack memory just keeps directions (references) to them.
+
+
+

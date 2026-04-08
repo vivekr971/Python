@@ -1,0 +1,10 @@
+✅zip() in Python
+The zip() function in Python is used to combine two or more iterables (like lists, tuples,
+strings, dictionaries, etc.) into a single iterator of tuples.
+
+Input: a = ["Liam", "Emma", "Noah"], b = [90, 85, 88]
+Output: [("Liam", 90), ("Emma", 85), ("Noah", 88)]
+
+✅The walrus operator allows assignment within an expression using :=
+It helps reduce redundancy by combining assignment and evaluation, commonly used in 
+loops and conditional statements.”
