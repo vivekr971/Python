@@ -61,33 +61,3 @@ if __name__ == "__main__":
 
 #-------------------------------------------------------------------------------
 
-import asyncio
-
-
-async def fn():
-    print('This is ')
-    await asyncio.sleep(1)
-    print('asynchronous programming')
-    await asyncio.sleep(1)
-    print('and not multi-threading')
-
-asyncio.run(fn())
-
-import asyncio
-
-async def fn():
-    
-    print("one")
-    await asyncio.sleep(1)
-    await fn2()
-    print('four')
-    await asyncio.sleep(1)
-    print('five')
-    await asyncio.sleep(1)
-
-async def fn2():
-    await asyncio.sleep(1)
-    print("two")
-    await asyncio.sleep(1)
-    print("three")
-asyncio.run(fn())

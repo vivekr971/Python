@@ -1,0 +1,90 @@
+👉Concurrency
+Concurrency means dealing with multiple tasks at once, but not necessarily 
+executing them simultaneously. 
+Concurrency is an approach that is used for decreasing the response time of 
+the system by using the single processing unit.
+Tasks start, run and complete in overlapping time periods.
+
+👉Parallelism
+Parallelism refers to actually executing multiple tasks at the same time on 
+multiple processing units.
+Tasks are divided into subtasks that run simultaneously on separate cores or processors.
+
+🔹 What is Threading in Python?
+
+Threading means running multiple parts of a program concurrently (at the same time) within
+a single process.
+Instead of doing tasks one after another (sequentially), threading allows tasks 
+to overlap in execution.
+
+🔹Steps to Create and Run Threads
+1: Import the module
+
+import threading
+
+2: Create threads
+
+t1 = threading.Thread(target=func1, args=(...,))
+t2 = threading.Thread(target=func2, args=(...,))
+
+3: Start threads
+
+t1.start()
+t2.start()
+
+4: Wait for completion
+
+t1.join()
+t2.join()
+
+✅What is Multiprocessing?
+
+“Multiprocessing in Python allows a program to run multiple processes simultaneously, 
+where each process runs in its own memory space and can execute on separate CPU cores, 
+enabling true parallelism.
+
+✅ What is GIL?
+
+GIL is a lock in CPython that ensures only one thread executes Python bytecode at a time. 
+It simplifies memory management by preventing race conditions, especially due to reference
+counting. However, it limits true parallelism in CPU-bound multithreaded programs. 
+For such cases, multiprocessing is preferred, while threading is still effective for
+I/O-bound tasks.
+
+“The GIL (Global Interpreter Lock) is a mutex in CPython that allows only one thread 
+to execute Python bytecode at a time, even on multi-core systems.
+
+🔹Only one thread can execute Python code at a time.
+🔹Prevents race conditions in memory management.
+
+✅asyncio in Python
+
+Asyncio is a Python library that is used for concurrent programming, including the 
+use of async iterator in Python. 
+
+asyncio is a Python library used to write concurrent code using async and await. 
+It allows a single thread to handle multiple tasks efficiently using an event loop, 
+mainly for I/O-bound operations.
+It is not multi-threading or multi-processing.
+
+👉 Unlike threading or multiprocessing:
+
+❌ No multiple threads
+❌ No multiple processes
+✅ Single thread
+✅ Uses event loop + cooperative multitasking
+
+| Function           | Behavior               |
+| ------------------ | ---------------------- |
+| `time.sleep(1)`    | Blocks entire thread ❌ |
+| `asyncio.sleep(1)` | Non-blocking ✅         |
+
+| Concept                     | Meaning                                    | Why It Matters               |
+| --------------------------- | ------------------------------------------ | ---------------------------- |
+| **Coroutine (`async def`)** | Special function that can pause and resume | Base unit of asyncio         |
+| **await**                   | Pauses current task and lets others run    | Enables concurrency          |
+| **Event Loop**              | Engine that runs and schedules tasks       | Controls execution flow      |
+| **asyncio.run()**           | Starts the event loop                      | Entry point of async program |
+| **asyncio.sleep()**         | Non-blocking delay                         | Allows task switching        |
+| **asyncio.gather()**        | Runs multiple coroutines together          | Used for concurrency         |
+
