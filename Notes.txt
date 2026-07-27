@@ -19,6 +19,14 @@ as an argument and returns a new function with enhanced functionality.
 | Class method    | Works with class (`cls`)      |
 | Static method   | Independent (no self, no cls) |
 
+
+----------------------------------------------------------------------------------
+Functions as First-Class Objects
+
+Functions are first-class objects, meaning they can be treated like any other object
+(such as integers, strings or lists). This allows functions to be assigned to variables, 
+passed as arguments, returned from other functions and stored in data structures, including decorators.
+
 --------------------------------------------------------------------------------------------------------
 👉A lambda function is a small, one-line function without a name.
 Lambda functions are small anonymous functions, meaning they do not have a defined name. 
@@ -41,6 +49,8 @@ It works by applying a function to each element and keeping only those for which
 filter(function, iterable)
 function → condition (returns True/False)
 iterable → list, tuple, etc.
+
+Return Value: A filter object (an iterator), which can be converted into a list, tuple, set, etc.
 
 👉map() function in Python applies a given function to each element of an iterable (list, tuple, set, etc.) 
 and returns a map object (iterator).
@@ -255,4 +265,125 @@ In simple terms: Heap memory is like a storage area where all values/objects liv
 stack memory just keeps directions (references) to them.
 
 
+-------------------------------------------------------------------------------------------------------------
+👉Python split() Method
+split() method is used to divide a string into multiple parts based on a specified separator. 
+It returns the resulting parts as a list of strings.
 
+👉Syntax
+str.split(separator, maxsplit)
+
+🔹separator (optional): Specifies the delimiter used to split the string. If not provided, 
+whitespace characters (spaces, tabs and newlines) are used by default.
+🔹maxsplit (optional): Specifies the maximum number of splits to perform. 
+The default value is -1, which means the string is split at all occurrences of the separator.
+
+s = "one,two,three"
+words = s.split(',')
+print(words)
+
+Output
+['one', 'two', 'three']
+
+👉Splitting Strings with Multiple Spaces
+When no separator is specified, consecutive whitespace characters are treated as a single separator.
+
+text = "Hello   world"
+print(text.split())
+
+Output
+['Hello', 'world']
+
+text = "geeks for geeks"
+print(text.split())
+
+text = "geeks,for,geeks"
+print(text.split(","))
+
+text = "geeks:for:geeks"
+print(text.split(":"))
+
+text = "CatBatSatFatOr"
+print(text.split("t"))
+
+Output
+['geeks', 'for', 'geeks']
+['geeks', 'for', 'geeks']
+['geeks', 'for', 'geeks']
+['Ca', 'Ba', 'Sa', 'Fa', 'Or']
+
+--------------------------------------------------------------------------------------------------------
+👉Python String join() Method
+The join() method is used to combine elements of an iterable into a single string, placing a chosen separator
+between each element. It works only with iterables containing strings, making it an efficient way to 
+build structured text.
+
+🔹Syntax
+separator.join(iterable)
+
+Parameters:
+
+🔹separator: The string placed between elements of the iterable.
+🔹iterable: A sequence of strings (e.g., list, tuple etc) to join together.
+
+t = ("Learn", "Python", "Fast")
+res = "-".join(t)
+print(res)
+
+Output
+Learn-Python-Fast
+Explanation: "-".join(t) inserts "-" between each tuple element to form a single string.
+
+d = {"Geek": 1, "for": 2, "Geeks": 3}
+res = "_".join(d)
+print(res)
+
+Output
+Geek_for_Geeks
+Explanation: "_".join(d) joins dictionary keys because join() reads only the keys during iteration.
+
+--------------------------------------------------------------------------------------------------------------
+👉Python list() Function
+
+list() function is used to create a list from iterable objects such as strings, tuples, sets and dictionaries.
+It converts each element of the iterable into a separate item in the list.
+
+Syntax
+list(iterable)
+
+Parameters: iterable (optional) - an object that can be iterated over, such as a string, tuple, set or dictionary.
+
+Returns: A new list containing elements from the iterable. If no argument is provided, it returns an empty list []
+
+s = "Python"
+res = list(s)
+print(res)
+
+Output
+['P', 'y', 't', 'h', 'o', 'n']
+
+d = {'A': 10, 'B': 20, 'C': 30}
+res = list(d)
+print(res)
+
+Output
+['A', 'B', 'C']
+Explanation: When a dictionary is passed to list(), only the keys are added to the list.
+
+------------------------------------------------------------------------------------------------
+👉Python List append() Method
+append() method is used to add a single element to the end of a list. It updates the original list
+directly and can add elements of any data type such as numbers, strings, lists or objects.
+
+Syntax
+list.append(element)
+
+Parameter: element - Item to be added at the end of the list.
+Return: It does not return any value, it modifies the original list directly.
+
+a = [2, 5, 6, 7]
+a.append(8)
+print(a)
+
+Output
+[2, 5, 6, 7, 8]
