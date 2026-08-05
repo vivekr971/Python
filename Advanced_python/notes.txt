@@ -17,6 +17,10 @@ a single process.
 Instead of doing tasks one after another (sequentially), threading allows tasks 
 to overlap in execution.
 
+Multithreading in Python allows multiple threads (smaller units of a process) to run concurrently,
+enabling efficient multitasking. It is especially useful for I/O-bound tasks like file handling, 
+network requests, or user interactions.
+
 🔹Steps to Create and Run Threads
 1: Import the module
 
@@ -88,3 +92,30 @@ It is not multi-threading or multi-processing.
 | **asyncio.sleep()**         | Non-blocking delay                         | Allows task switching        |
 | **asyncio.gather()**        | Runs multiple coroutines together          | Used for concurrency         |
 
+import asyncio
+
+async def fn():
+    print('This is ')
+    await asyncio.sleep(1)
+    print('asynchronous programming')
+    await asyncio.sleep(1)
+    print('and not multi-threading')
+
+asyncio.run(fn())
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------
+👉 Pickling:
+
+Pickling is the name of the serialization process in Python. Any object in Python can be serialized 
+into a byte stream and dumped as a file in the memory. The process of pickling is compact but pickle objects 
+can be compressed further. Moreover, pickle keeps track of the objects it has serialized and the serialization is portable across versions.
+
+✅The function used for the above process is pickle.dump().
+
+👉Unpickling:
+
+Unpickling is the complete inverse of pickling. It deserializes the byte stream to recreate the objects stored 
+in the file and loads the object to memory.
+
+✅The function used for the above process is pickle.load().

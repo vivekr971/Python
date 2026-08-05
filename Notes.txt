@@ -337,7 +337,6 @@ Explanation: "-".join(t) inserts "-" between each tuple element to form a single
 d = {"Geek": 1, "for": 2, "Geeks": 3}
 res = "_".join(d)
 print(res)
-
 Output
 Geek_for_Geeks
 Explanation: "_".join(d) joins dictionary keys because join() reads only the keys during iteration.
@@ -358,14 +357,12 @@ Returns: A new list containing elements from the iterable. If no argument is pro
 s = "Python"
 res = list(s)
 print(res)
-
 Output
 ['P', 'y', 't', 'h', 'o', 'n']
 
 d = {'A': 10, 'B': 20, 'C': 30}
 res = list(d)
 print(res)
-
 Output
 ['A', 'B', 'C']
 Explanation: When a dictionary is passed to list(), only the keys are added to the list.
